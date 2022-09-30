@@ -1,10 +1,8 @@
-from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.contrib.auth import User
-from operator import mod
-from unicodedata import name
-from datetime import datetime, date
-import uuid
+from django.contrib.auth.models import User
+
+class admin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Players(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -54,14 +52,11 @@ class TeamPlayerRecords(models.Model):
 
 class Campus(models.Model):
     name = models.CharField(max_length=20, blank=False)
-    adress = models.CharField(max_length=40, blank=False)
+    address = models.CharField(max_length=40, blank=False)
 
 class Field(models.Model):
     name = models.CharField(max_length=20, blank=False)
     campus_name = models.ForeignKey(Campus, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.name
 
 class Referees(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
