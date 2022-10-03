@@ -4,3 +4,6 @@ from .serializer import UserPlayerSerializer
 
 class CreatePlayerView(CreateAPIView):
     serializer_class = UserPlayerSerializer
+
+class CreateTeamManagerView(CreateAPIView):
+    serializer_class = UserTeamManagerSerializer
