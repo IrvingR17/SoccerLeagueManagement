@@ -1,12 +1,30 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
+
+from .managers import CustomUserManager
+
+
+class CustomUser(AbstractUser):
+    username = None
+    groups = None
+    user_permissions = None
+    email = models.EmailField(_('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.email
 
 class admin(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
 class Players(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pic = models.ImageField()
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, blank=True)
+    pic = models.ImageField(blank=True, null=True)
 
     GENDERS = (
         ('H', 'Hombre'),
@@ -30,7 +48,7 @@ class Players(models.Model):
     sanction_status = models.CharField(max_length=1, choices=SANCTION_STATUS, default="D")
 
 class Team_Owner(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
 class Leagues(models.Model):
     name = models.CharField(max_length=20, blank=False)
@@ -59,7 +77,7 @@ class Field(models.Model):
     campus_name = models.ForeignKey(Campus, on_delete=models.PROTECT)
 
 class Referees(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
 class Match(models.Model):
     team_name1 = models.ForeignKey(Teams, on_delete=models.PROTECT, related_name='team1')
