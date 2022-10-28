@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
 from .managers import CustomUserManager
 
 
@@ -10,9 +9,10 @@ class CustomUser(AbstractUser):
     groups = None
     user_permissions = None
     email = models.EmailField(_('email address'), unique=True)
-
+    phone_number = models.CharField(max_length=10, blank=True, unique=True)
+    
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number']
 
     objects = CustomUserManager()
 
@@ -31,7 +31,6 @@ class Players(models.Model):
         ('M', 'Mujer'),
     )
     gender = models.CharField(max_length=1, choices=GENDERS, blank=False)
-    phone_number = models.CharField(max_length=10, blank=True)
 
     POSITION = (
         ('POR', 'Portero'),
