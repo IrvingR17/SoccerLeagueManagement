@@ -1,12 +1,39 @@
 from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer, UserSerializer
-from .models import Players, Team_Owner
+from .models import Players, Leagues
 from .models import CustomUser
 
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = CustomUser
         fields = '__all__'
+
+class LeaguesSelializer(serializers.ModelSerializer):
+    class Meta:
+        model = Leagues
+        fields = '__all__'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class UserSelializer(serializers.ModelSerializer):
     class Meta:

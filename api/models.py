@@ -51,6 +51,7 @@ class Team_Owner(models.Model):
 
 class Leagues(models.Model):
     name = models.CharField(max_length=20, blank=False)
+    description = models.CharField(max_length=50)
     
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
