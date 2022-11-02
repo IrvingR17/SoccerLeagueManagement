@@ -18,13 +18,13 @@
                                 {{league.description}}
                             </b-card-text>
         
-                            <b-button href="#" variant="primary">Mas informacion</b-button>
+                            <b-button @click="$router.push('/league')" variant="primary">Mas informacion</b-button>
                         </b-card>  
                     </b-card-group>
                 </div>
             </div>
             <div class="btn-add-league">
-                <b-button href="http://localhost:8080/register_league" block variant="primary">Agregar Liga</b-button>
+                <b-button @click="$router.push('/register_league')" block variant="primary">Agregar Liga</b-button>
             </div>
         </div>
     </div>

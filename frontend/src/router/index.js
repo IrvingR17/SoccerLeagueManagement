@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import LogIn from '@/components/LogIn'
 import Index from '@/components/Index'
 import RegisterLeague from '@/components/RegisterLeague'
+import League from '@/components/League'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/register_league',
       name: 'RegisterLeague',
       component: RegisterLeague
+    },
+    {
+      path: '/league',
+      name: 'League',
+      component: League
     },
     {
       path: '/',

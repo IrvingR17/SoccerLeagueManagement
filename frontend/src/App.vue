@@ -2,7 +2,10 @@
   <div id="app">
     <div class="nav">
       <h4>Soccer League Management</h4>
-      <router-link to="/index">Ligas</router-link>
+
+      <div class="nav-link">
+        <router-link to="/index">Ligas</router-link>
+      </div>
       
     </div>
     <div class="content">
@@ -28,15 +31,17 @@ export default {
   display: flex;
 }
 .nav {
-  flex: 20%;
+  flex: 15%;
   height: 100vh;
   background-color: #363740;
   color: #A4A6B3;
 }
 h4 {
+  box-sizing: border-box;
+  padding: 0;
   margin: 10px 0 0 0;
 }
 .content {
-  flex: 80%;
+  flex: 85%;
 }
 </style>
