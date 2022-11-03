@@ -18,7 +18,7 @@
                                 {{league.description}}
                             </b-card-text>
         
-                            <b-button @click="$router.push('/league')" variant="primary">Mas informacion</b-button>
+                            <b-button @click="getId(league.id)" variant="primary">Mas informacion</b-button>
                         </b-card>  
                     </b-card-group>
                 </div>
@@ -41,14 +41,17 @@ export default {
         }
     },
     methods: {
-        getCardInfo() {
+        async getCardInfo() {
             const path = 'http://127.0.0.1:8000/api/leagues/list/'
-            axios.get(path).then((response) => {
+            await axios.get(path).then((response) => {
                 this.leagues = response.data
             })
             .catch((error) => {
                 console.log(error)
             })
+        },
+        getId(id){
+            this.$router.push('/league/' + id)
         }
     },
     created() {

@@ -26,7 +26,7 @@ export default new Router({
       component: RegisterLeague
     },
     {
-      path: '/league',
+      path: '/league/:id',
       name: 'League',
       component: League
     },
