@@ -50,7 +50,7 @@ class Players(models.Model):
     sanction_status = models.CharField(max_length=1, choices=SANCTION_STATUS, default="D")
 
 class Team_Owner(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser.is_manager, on_delete=models.CASCADE)
 
 class Leagues(models.Model):
     name = models.CharField(max_length=20, blank=False)
@@ -61,7 +61,7 @@ class Leagues(models.Model):
     
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
-    team_owner = models.ForeignKey(Team_Owner, on_delete=models.PROTECT)
+    manager = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
     league_name = models.ForeignKey(Leagues, on_delete=models.PROTECT)
     matches_played = models.IntegerField(default=0, blank=False)
     goals_for = models.IntegerField(default=0, blank=False)
