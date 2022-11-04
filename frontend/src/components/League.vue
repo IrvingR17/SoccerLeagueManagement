@@ -2,6 +2,16 @@
     <div class="containe">
         <div class="info">
             <h2>{{league_info.name}}</h2>
+            <div class="content">
+
+                    <b-button variant="primary">Agregar equipo</b-button>
+                    <b-button variant="warning">Editar liga</b-button>
+
+                    <b-table :items="teams" :fields="fields" caption-top>
+                        <template #table-caption>Tabla de posiciones</template>
+                    </b-table>
+
+            </div>
         </div>
     </div>
 </template>
@@ -15,6 +25,14 @@ export default {
         return {
             league_info: null,
             id: null,
+            teams: [],
+            fields: [
+                {key: 'name', label: 'Equipo'},
+                {key: 'matches_played', label: 'PJ'},
+                {key: 'goals_for', label: 'GF'},
+                {key: 'goals_against', label: 'GF'},
+                {key: 'score', label: 'Puntos'},
+            ]
         }
     },
     methods: {
@@ -36,11 +54,7 @@ export default {
 }
 </script>
 <style scoped>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+    
     .containe {
         display: flex;
     }

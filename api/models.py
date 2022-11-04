@@ -10,6 +10,9 @@ class CustomUser(AbstractUser):
     user_permissions = None
     email = models.EmailField(_('email address'), unique=True)
     phone_number = models.CharField(max_length=10, blank=True, unique=True)
+    is_manager = models.BooleanField(_('manager status'), default=False)
+    is_player = models.BooleanField(_('player status'), default=False)
+    is_referee = models.BooleanField(_('referee status'), default=False)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number']
@@ -52,11 +55,15 @@ class Team_Owner(models.Model):
 class Leagues(models.Model):
     name = models.CharField(max_length=20, blank=False)
     description = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
     
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
     team_owner = models.ForeignKey(Team_Owner, on_delete=models.PROTECT)
     league_name = models.ForeignKey(Leagues, on_delete=models.PROTECT)
+    matches_played = models.IntegerField(default=0, blank=False)
     goals_for = models.IntegerField(default=0, blank=False)
     goals_against = models.IntegerField(default=0, blank=False)
     score = models.IntegerField(default=0, blank=False)

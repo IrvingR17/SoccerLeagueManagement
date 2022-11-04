@@ -22,9 +22,6 @@ class ListPlayersView(ListAPIView):
 class CreatePlayerView(CreateAPIView):
     serializer_class = PlayerSerializer
 
-class ListManagerView(ListAPIView):
-    
-
 class TeamListView(ListAPIView):
     serializer_class = teamSerializer
     queryset = Teams.objects.all()
