@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
-from .serializer import LeaguesSerializer, PlayerSerializer, UserSerializer
-from .models import Leagues, Players, CustomUser
+from .serializer import *
+from .models import *
 
 class LeaguesListView(ListAPIView):
     serializer_class = LeaguesSerializer
@@ -21,3 +21,13 @@ class ListPlayersView(ListAPIView):
 
 class CreatePlayerView(CreateAPIView):
     serializer_class = PlayerSerializer
+
+class ListManagerView(ListAPIView):
+    
+
+class TeamListView(ListAPIView):
+    serializer_class = teamSerializer
+    queryset = Teams.objects.all()
+
+class CreateTeamView(CreateAPIView):
+    serializer_class = teamSerializer
