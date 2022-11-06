@@ -30,18 +30,27 @@ export default {
                 {key: 'name', label: 'Equipo'},
                 {key: 'matches_played', label: 'PJ'},
                 {key: 'goals_for', label: 'GF'},
-                {key: 'goals_against', label: 'GF'},
+                {key: 'goals_against', label: 'GC'},
                 {key: 'score', label: 'Puntos'},
-            ]
+            ],  
         }
     },
     methods: {
         async getLeagueInfo() {
             this.id = this.$route.params.id
-            const path = "http://127.0.0.1:8000/api/leagues/list/" + this.id
+            let path = "http://127.0.0.1:8000/api/leagues/list/" + this.id
             await axios.get(path).then((response) => {
                 this.league_info = response.data
                 console.log(this.league_info)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+            path = "http://127.0.0.1:8000/api/teams/list/" + this.id
+            await axios.get(path).then((response) => {
+                this.teams = response.data
+                console.log(this.teams)
             })
             .catch((error) => {
                 console.log(error)

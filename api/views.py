@@ -15,16 +15,15 @@ class LeagueRetrieveView(RetrieveAPIView):
 class LeaguesCreateView(CreateAPIView):
     serializer_class = LeaguesSerializer
 
-class ListPlayersView(ListAPIView):
-    serializer_class = PlayerSerializer
-    queryset = Players.objects.all()
-
-class CreatePlayerView(CreateAPIView):
-    serializer_class = PlayerSerializer
-
 class TeamListView(ListAPIView):
     serializer_class = teamSerializer
     queryset = Teams.objects.all()
 
 class CreateTeamView(CreateAPIView):
     serializer_class = teamSerializer
+
+class TeamRetrieveView(RetrieveAPIView):
+    serializer_class = teamSerializer
+    queryset = Teams.objects.all()
+    lookup_field = "league_name"
+

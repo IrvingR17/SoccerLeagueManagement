@@ -52,11 +52,7 @@ export default {
 </script>
 
 <style scoped>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+
     .info {
         text-align: left;
         margin: 15px;

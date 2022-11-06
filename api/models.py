@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     is_referee = models.BooleanField(_('referee status'), default=False)
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'is_manager', 'is_referee', 'is_player']
 
     objects = CustomUserManager()
 
@@ -49,9 +49,6 @@ class Players(models.Model):
     )
     sanction_status = models.CharField(max_length=1, choices=SANCTION_STATUS, default="D")
 
-class Team_Owner(models.Model):
-    user = models.OneToOneField(CustomUser.is_manager, on_delete=models.CASCADE)
-
 class Leagues(models.Model):
     name = models.CharField(max_length=20, blank=False)
     description = models.CharField(max_length=50)
@@ -61,7 +58,7 @@ class Leagues(models.Model):
     
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
-    manager = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
+    manager = models.ForeignKey(CustomUser, on_delete=models.PROTECT, limit_choices_to={'is_manager': True})
     league_name = models.ForeignKey(Leagues, on_delete=models.PROTECT)
     matches_played = models.IntegerField(default=0, blank=False)
     goals_for = models.IntegerField(default=0, blank=False)

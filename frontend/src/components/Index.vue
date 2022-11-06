@@ -4,7 +4,7 @@
             <h2>Menu Ligas</h2>
             <div class="leagues">
                 <div class="league-cards">
-                    <b-card-group columns>
+                    <b-card-group deck>
                         <b-card v-for="league in leagues" 
                             :title="league.name"
                             img-src="https://picsum.photos/600/300/?image=25"
@@ -52,7 +52,7 @@ export default {
         },
         getId(id){
             this.$router.push('/league/' + id)
-        }
+        },
     },
     created() {
         this.getCardInfo()
@@ -61,11 +61,7 @@ export default {
 </script>
 
 <style scoped>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+
     .containe {
         display: flex;
     }
