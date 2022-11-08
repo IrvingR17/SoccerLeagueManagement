@@ -4,8 +4,8 @@
             <h2>{{league_info.name}}</h2>
             <div class="content">
 
-                    <b-button variant="primary">Agregar equipo</b-button>
-                    <b-button variant="warning">Editar liga</b-button>
+                    <b-button @click="goToAddTeam()" variant="primary">Agregar equipo</b-button>
+                    <b-button @click="goToEdit()" variant="warning">Editar liga</b-button>
 
                     <b-table :items="teams" :fields="fields" caption-top>
                         <template #table-caption>Tabla de posiciones</template>
@@ -55,6 +55,12 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        goToEdit() {
+            this.$router.push('/edit_league/' + this.id)
+        },
+        goToAddTeam() {
+            this.$router.push('/add_team/' + this.id)
         }
     },
     created() {
