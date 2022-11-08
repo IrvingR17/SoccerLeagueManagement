@@ -50,7 +50,6 @@ export default {
     },
     methods: {
         async addTeam () {
-            console.log(this.name, this.manager.email, this.league_name.name)
             const data = { name: this.name, manager: this.manager.id, league_name: this.league_name.id };
             const response = await axios.post('http://127.0.0.1:8000/api/teams/create/', data) 
         },
