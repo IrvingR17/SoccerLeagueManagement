@@ -1,0 +1,58 @@
+<template>
+    <div class="containe">
+        <div class="info">
+            <h2>{{team.name}}</h2>
+            <div class="content">
+
+                    <b-table selectable select-mode="single" hover @row-selected="goToTeam" :items="teams" :fields="fields" caption-top>
+                        <template #table-caption>Jugadores</template>
+                    </b-table>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+    name: 'Team',
+
+    data() {
+        return {
+            team: '',
+        }
+    },
+    methods: {
+        async getTeamInfo() {
+            this.id = this.$route.params.id
+            let path = "http://127.0.0.1:8000/api/teams/list2/" + this.id
+            await axios.get(path).then((response) => {
+                this.team = response.data
+                console.log(this.team)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        },
+    },
+    created() {
+        this.getTeamInfo()
+    }
+}
+</script>
+
+<style scoped>
+.containe {
+    display: flex;
+}
+.info {
+    flex: 80%;
+    margin: 15px;
+}
+h2 {
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+</style>

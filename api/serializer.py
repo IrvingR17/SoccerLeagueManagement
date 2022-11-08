@@ -8,6 +8,11 @@ class UserCreateSerializer(UserCreateSerializer):
         model = CustomUser
         fields = '__all__'
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
 class LeaguesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Leagues
@@ -18,8 +23,10 @@ class teamSerializer(serializers.ModelSerializer):
         model = Teams
         fields = '__all__'
 
-
-
+class TeamPlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamPlayerRecords
+        fields = '__all__'
 
 
 

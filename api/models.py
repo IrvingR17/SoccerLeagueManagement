@@ -59,14 +59,14 @@ class Leagues(models.Model):
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
     manager = models.ForeignKey(CustomUser, on_delete=models.PROTECT, limit_choices_to={'is_manager': True})
-    league_name = models.ForeignKey(Leagues, on_delete=models.PROTECT)
+    league_name = models.ForeignKey(Leagues, on_delete=models.CASCADE)
     matches_played = models.IntegerField(default=0, blank=False)
     goals_for = models.IntegerField(default=0, blank=False)
     goals_against = models.IntegerField(default=0, blank=False)
     score = models.IntegerField(default=0, blank=False)
 
 class TeamPlayerRecords(models.Model):
-    player = models.ForeignKey(Players, on_delete=models.PROTECT)
+    player = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
     team = models.ForeignKey(Teams, on_delete=models.PROTECT)
     date_of_joining = models.DateField(auto_now_add=True)
     goals = models.IntegerField(default=0, blank=False)

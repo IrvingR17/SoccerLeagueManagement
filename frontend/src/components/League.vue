@@ -4,10 +4,10 @@
             <h2>{{league_info.name}}</h2>
             <div class="content">
 
-                    <b-button variant="primary">Agregar equipo</b-button>
-                    <b-button variant="warning">Editar liga</b-button>
+                    <b-button @click="goToAddTeam()" variant="primary">Agregar equipo</b-button>
+                    <b-button @click="goToEdit()" variant="warning">Editar liga</b-button>
 
-                    <b-table :items="teams" :fields="fields" caption-top>
+                    <b-table selectable select-mode="single" hover @row-selected="goToTeam" :items="teams" :fields="fields" caption-top>
                         <template #table-caption>Tabla de posiciones</template>
                     </b-table>
 
@@ -33,6 +33,7 @@ export default {
                 {key: 'goals_against', label: 'GC'},
                 {key: 'score', label: 'Puntos'},
             ],  
+            selected: []
         }
     },
     methods: {
@@ -55,6 +56,16 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        goToEdit() {
+            this.$router.push('/edit_league/' + this.id)
+        },
+        goToAddTeam() {
+            this.$router.push('/add_team/' + this.id)
+        },
+        goToTeam(teams){
+            this.$router.push('/team/' + (this.selected = teams[0].id))
+
         }
     },
     created() {
