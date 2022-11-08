@@ -22,7 +22,7 @@
                         :options="options"
                         required
                         >
-                        <option v-for="manager in options" :value="option">
+                        <option v-for="option in options" :value="option">
                             {{ option.name }}
                         </option>
                     </b-form-select>
@@ -44,15 +44,8 @@ export default {
         return {
             name: '',
             manager: '',
-            managers: '',
             league_name: '',
-            options: [
-                { value: null, text: 'Please select an option' },
-                { value: 'a', text: 'This is First option' },
-                { value: 'b', text: 'Selected Option' },
-                { value: { C: '3PO' }, text: 'This is an option with object value' },
-                { value: 'd', text: 'This one is disabled', disabled: true }
-            ]
+            options: '', 
         }
     },
     methods: {
@@ -74,8 +67,8 @@ export default {
             
             path = "http://127.0.0.1:8000/api/managers/list/"
             await axios.get(path).then((response) => {
-                this.managers = response.data
-                console.log(this.managers)
+                this.options = response.data
+                console.log(this.options)
             })
             .catch((error) => {
                 console.log(error)
