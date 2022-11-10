@@ -14,8 +14,10 @@ class PlayerRetrieveView(RetrieveAPIView):
 
 class TeamPlayerListView(ListAPIView):
     serializer_class = PlayerTeamSerializer
-    queryset = TeamPlayerRecords.objects.all()
-    lookup_field = "team"
+    def get_queryset(self):
+        team_id = self.kwargs['team']
+        queryset = TeamPlayerRecords.objects.filter(team_id=team_id)
+        return queryset
 
 class TeamPlayerCreateView(CreateAPIView):
     serializer_class = TeamPlayerSerializer
@@ -51,8 +53,10 @@ class CreateTeamView(CreateAPIView):
 
 class TeamRetrieveView(ListAPIView):
     serializer_class = teamSerializer
-    queryset = Teams.objects.all()
-    lookup_field = "league_name"
+    def get_queryset(self): 
+        league_name_id = self.kwargs['league_name']
+        queryset = Teams.objects.filter(league_name_id=league_name_id)
+        return queryset
 
 class TeamRetrieveView2(RetrieveAPIView):
     serializer_class = teamSerializer

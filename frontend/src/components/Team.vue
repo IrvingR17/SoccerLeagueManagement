@@ -22,10 +22,9 @@ export default {
     data() {
         return {
             team: '',
-            players_id: [],
             players: [],
             fields: [
-                {key: 'player', label: 'Nombre'},
+                {key: 'player.first_name', label: 'Nombre'},
                 {key: 'goals', label: 'Goles'},
             ],  
         }
@@ -43,23 +42,12 @@ export default {
 
             let path2 = "http://127.0.0.1:8000/api/team_player/list/" + this.id
             await axios.get(path2).then((response) => {
-                this.players_id = response.data
-                console.log(this.players_id)
+                this.players = response.data
+                console.log(this.players)
             })
             .catch((error) => {
                 console.log(error)
             })
-
-            for (const key in players_id) {
-                let path3 = "http://127.0.0.1:8000/api/players/list/" + this.players_id[key].player
-                await axios.get(path3).then((response) => {
-                    this.players = response.data
-                    
-                })
-                    .catch((error) => {
-                    console.log(error)
-                })
-            }
         }
     },
     created() {
