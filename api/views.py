@@ -7,10 +7,18 @@ class UserListView(ListAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.filter(is_manager=True)
 
+class PlayerRetrieveView(RetrieveAPIView):
+    serializer_class = UserSerializer
+    queryset = CustomUser.objects.filter(is_player=True)
+    lookup_field = "id"
+
 class TeamPlayerListView(ListAPIView):
-    serializer_class = TeamPlayerSerializer
-    queryset = TeamPlayerRecords.objects.filter(player__is_player=True)
+    serializer_class = PlayerTeamSerializer
+    queryset = TeamPlayerRecords.objects.all()
     lookup_field = "team"
+
+class TeamPlayerCreateView(CreateAPIView):
+    serializer_class = TeamPlayerSerializer
 
 class LeaguesListView(ListAPIView):
     serializer_class = LeaguesSerializer

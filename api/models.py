@@ -20,7 +20,7 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.email
+        return self.first_name
 
 class admin(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -65,8 +65,11 @@ class Teams(models.Model):
     goals_against = models.IntegerField(default=0, blank=False)
     score = models.IntegerField(default=0, blank=False)
 
+    def __str__(self):
+        return self.name
+
 class TeamPlayerRecords(models.Model):
-    player = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
+    player = models.ForeignKey(CustomUser, on_delete=models.PROTECT, limit_choices_to={'is_player': True})
     team = models.ForeignKey(Teams, on_delete=models.PROTECT)
     date_of_joining = models.DateField(auto_now_add=True)
     goals = models.IntegerField(default=0, blank=False)

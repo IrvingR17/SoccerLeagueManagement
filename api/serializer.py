@@ -31,6 +31,21 @@ class TeamPlayerSerializer(serializers.ModelSerializer):
 
 
 
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['first_name']
+
+class PlayerTeamSerializer(serializers.ModelSerializer):
+    players = PlayerSerializer(read_only=True)
+
+    class Meta:
+        model = TeamPlayerRecords
+        fields = ['players']
+
+
+
+
 
 
 
