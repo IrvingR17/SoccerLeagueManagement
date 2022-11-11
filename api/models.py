@@ -58,7 +58,7 @@ class Leagues(models.Model):
     
 class Teams(models.Model):
     name = models.CharField(max_length=20, blank=False)
-    manager = models.ForeignKey(CustomUser, on_delete=models.PROTECT, limit_choices_to={'is_manager': True})
+    manager_name = models.ForeignKey(CustomUser, on_delete=models.PROTECT, limit_choices_to={'is_manager': True})
     league_name = models.ForeignKey(Leagues, on_delete=models.CASCADE)
     matches_played = models.IntegerField(default=0, blank=False)
     goals_for = models.IntegerField(default=0, blank=False)

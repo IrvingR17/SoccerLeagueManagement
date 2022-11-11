@@ -2,11 +2,12 @@
     <div class="containe">
         <div class="info">
             <h2>{{team.name}}</h2>
+            <h3>Representante: {{team.manager_name.first_name + " " + team.manager_name.last_name}}</h3>
             <div class="content">
-
-                    <b-table selectable select-mode="single" hover @row-selected="" :items="players" :fields="fields" caption-top>
-                        <template #table-caption>Jugadores</template>
-                    </b-table>
+                <b-button @click="goToEdit()" variant="warning">Editar equipo</b-button>
+                <b-table selectable select-mode="single" hover @row-selected="" :items="players" :fields="fields" caption-top>
+                    <template #table-caption>Jugadores</template>
+                </b-table>
 
             </div>
         </div>
@@ -35,6 +36,7 @@ export default {
             let path = "http://127.0.0.1:8000/api/teams/list2/" + this.id
             await axios.get(path).then((response) => {
                 this.team = response.data
+                console.log(this.team)
             })
             .catch((error) => {
                 console.log(error)
@@ -48,6 +50,9 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        goToEdit() {
+            this.$router.push('/edit_team/' + this.id)
         }
     },
     created() {

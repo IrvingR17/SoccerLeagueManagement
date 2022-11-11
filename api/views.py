@@ -63,3 +63,12 @@ class TeamRetrieveView2(RetrieveAPIView):
     queryset = Teams.objects.all()
     lookup_field = "id"
 
+class TeamEditView(UpdateAPIView):
+    serializer_class = teamSerializer
+    queryset = Teams.objects.all()
+    lookup_field = "id"
+
+class TeamDeleteView(DestroyAPIView):
+    serializer_class = teamSerializer
+    queryset = Teams.objects.all()
+    lookup_field = "id"
