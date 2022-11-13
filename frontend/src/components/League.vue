@@ -74,16 +74,15 @@ export default {
 }
 </script>
 <style scoped>
-    
-    .containe {
-        display: flex;
-    }
-    .info {
-        flex: 80%;
-    }
-    h2 {
-        border-bottom: 1px solid black;
-        text-align: left;
-        margin: 0 15px 0 15px;
-    }
+.containe {
+    display: flex;
+}
+.info {
+    flex: 80%;
+}
+h2 {
+    border-bottom: 1px solid black;
+    text-align: left;
+    margin: 0 15px 0 15px;
+}
 </style>

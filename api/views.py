@@ -7,6 +7,10 @@ class UserListView(ListAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.filter(is_manager=True)
 
+class RefereesListView(ListAPIView):
+    serializer_class = UserSerializer
+    queryset = CustomUser.objects.filter(is_referee=True)
+
 class PlayerRetrieveView(RetrieveAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.filter(is_player=True)

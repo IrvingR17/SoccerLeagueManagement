@@ -9,6 +9,8 @@ import EditLeague from '@/components/EditLeague'
 import AddTeam from '@/components/AddTeam'
 import Team from '@/components/Team'
 import EditTeam from '@/components/EditTeam'
+import Referees from '@/components/Referees'
+import AddReferee from '@/components/AddReferee'
 
 Vue.use(Router)
 
@@ -53,6 +55,16 @@ export default new Router({
       path: '/edit_team/:id',
       name: 'EditTeam',
       component: EditTeam
+    },
+    {
+      path: '/referees',
+      name: 'Referees',
+      component: Referees
+    },
+    {
+      path: '/add_referee/',
+      name: 'AddReferee',
+      component: AddReferee
     },
     {
       path: '/',
