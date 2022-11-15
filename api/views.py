@@ -7,6 +7,10 @@ class UserListView(ListAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.filter(is_manager=True)
 
+class ManagerListView(ListAPIView):
+    serializer_class = teamSerializer
+    queryset = Teams.objects.filter(manager_name__is_manager=True)
+
 class RefereesListView(ListAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.filter(is_referee=True)
@@ -68,7 +72,7 @@ class TeamRetrieveView2(RetrieveAPIView):
     lookup_field = "id"
 
 class TeamEditView(UpdateAPIView):
-    serializer_class = teamSerializer
+    serializer_class = TeamEditSerializer
     queryset = Teams.objects.all()
     lookup_field = "id"
 

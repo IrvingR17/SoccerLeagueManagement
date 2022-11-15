@@ -21,7 +21,7 @@ class LeaguesSerializer(serializers.ModelSerializer):
 class ManagerSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'first_name', 'last_name']
+        fields = ['id', 'first_name', 'last_name', 'phone_number', 'email']
 
 class teamSerializer(serializers.ModelSerializer):
     manager_name = ManagerSerializer(read_only=True)
@@ -29,6 +29,11 @@ class teamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teams
         fields = '__all__' 
+
+class TeamEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teams
+        fields = '__all__'
 
 class TeamPlayerSerializer(serializers.ModelSerializer):
     class Meta:

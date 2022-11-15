@@ -6,6 +6,7 @@
       <div class="nav-link">
         <router-link class="link" to="/index">Ligas</router-link>
         <router-link class="link" to="/referees">Arbitros</router-link>
+        <router-link class="link" to="/managers">Representantes de equipo</router-link>
       </div>
       
     </div>
@@ -43,12 +44,18 @@ export default {
     padding: 0;
     width: 100%;
     height: 100%;
+    margin-top: 15px;
   }
   .link {
     display: block;
     color: #A4A6B3; 
     text-align: left;
-    margin: 30px 0 0 15px;
+    padding: 15px;
+  }
+  .link:hover {
+    text-decoration: none;
+    background-color: #9FA2B4;
+    color: white;
   }
   h4 {
     box-sizing: border-box;

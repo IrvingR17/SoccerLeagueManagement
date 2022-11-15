@@ -58,7 +58,6 @@ export default {
             let path = "http://127.0.0.1:8000/api/leagues/list/" + this.id
             await axios.get(path).then((response) => {
                 this.league_name = response.data
-                console.log(this.league_name)
             })
             .catch((error) => {
                 console.log(error)
@@ -68,7 +67,6 @@ export default {
             path = "http://127.0.0.1:8000/api/managers/list/"
             await axios.get(path).then((response) => {
                 this.options = response.data
-                console.log(this.options)
             })
             .catch((error) => {
                 console.log(error)

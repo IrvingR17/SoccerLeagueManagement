@@ -11,6 +11,8 @@ import Team from '@/components/Team'
 import EditTeam from '@/components/EditTeam'
 import Referees from '@/components/Referees'
 import AddReferee from '@/components/AddReferee'
+import Managers from '@/components/Managers'
+import AddManager from '@/components/AddManager'
 
 Vue.use(Router)
 
@@ -65,6 +67,16 @@ export default new Router({
       path: '/add_referee/',
       name: 'AddReferee',
       component: AddReferee
+    },
+    {
+      path: '/managers',
+      name: 'Managers',
+      component: Managers
+    },
+    {
+      path: '/add_manager/',
+      name: 'AddManager',
+      component: AddManager
     },
     {
       path: '/',

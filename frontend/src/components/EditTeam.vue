@@ -45,25 +45,36 @@ export default {
             id: null,
             name: '',
             manager: '',
+            team: '',
             options: '',
         }
     },
     methods: {
         async editTeam() {
             this.id = this.$route.params.id
-            const data = { name: this.name, manager: this.manager.id }
+            const data = { name: this.name, manager_name: this.manager.id, league_name: this.team.league_name }
             const path = 'http://127.0.0.1:8000/api/teams/edit/' + this.id
             await axios.put(path, data) 
         },
         async getData () {
-            const path = "http://127.0.0.1:8000/api/managers/list/"
+            this.id = this.$route.params.id
+            let path = "http://127.0.0.1:8000/api/managers/list/"
             await axios.get(path).then((response) => {
                 this.options = response.data
-                console.log(this.options)
             })
             .catch((error) => {
                 console.log(error)
             })
+
+            path = "http://127.0.0.1:8000/api/teams/list2/" + this.id
+            await axios.get(path).then((response) => {
+                this.team = response.data
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+            this.name = this.team.name
         },
         async deleteTeam() {
             this.id = this.$route.params.id

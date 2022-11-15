@@ -5,6 +5,7 @@ urlpatterns = [
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
     path('managers/list/', UserListView.as_view(), name="user-list"),
+    path('manager_team/list/', ManagerListView.as_view(), name="manager-team-list"),
     path('referees/list/', RefereesListView.as_view(), name="referees-list"),
     path('players/list/<int:id>', PlayerRetrieveView.as_view(), name="player-list"),
     path('leagues/list/', LeaguesListView.as_view(), name="leagues-list"),
