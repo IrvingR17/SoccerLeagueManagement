@@ -7,7 +7,7 @@
                 <b-button @click="goToAddManager()" variant="primary">Agregar Representante de equipo</b-button>
 
                 <b-table selectable select-mode="single" hover @row-selected="" :items="managers" :fields="fields" caption-top>
-                    <template #table-caption>Arbitros</template>
+                    <template #table-caption>Representantes:</template>
                 </b-table>
 
             </div>

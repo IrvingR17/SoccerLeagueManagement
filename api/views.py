@@ -57,7 +57,7 @@ class TeamListView(ListAPIView):
     queryset = Teams.objects.all()
 
 class CreateTeamView(CreateAPIView):
-    serializer_class = teamSerializer
+    serializer_class = TeamEditSerializer
 
 class TeamRetrieveView(ListAPIView):
     serializer_class = teamSerializer

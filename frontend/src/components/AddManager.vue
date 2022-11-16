@@ -57,8 +57,7 @@
                         required
                         ></b-form-input>
                     </b-form-group>
-                    <b-button type="submit" @click="goToAddTeam()" variant="primary">Registrar representante y crear nuevo equipo</b-button>
-                    <b-button type="submit" @click="goToAddTeam()" variant="primary">Registrar representante y actualizar equipo</b-button>
+                    <b-button type="submit" variant="primary">Registrar representante</b-button>
 
                 </b-form>
         </div>        
