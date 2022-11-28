@@ -59,6 +59,10 @@ export default {
     flex: 80%;
     margin: 15px;
 }
+.content {
+    margin:  25px 50px 0 50px;
+
+}
 h2 {
     border-bottom: 1px solid black;
     text-align: left;

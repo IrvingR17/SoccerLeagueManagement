@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import LogIn from '@/components/LogIn'
 import Index from '@/components/Index'
+import Leagues from '@/components/Leagues'
 import RegisterLeague from '@/components/RegisterLeague'
 import League from '@/components/League'
 import EditLeague from '@/components/EditLeague'
@@ -19,14 +20,19 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'Index',
+      component: Index
+    },
+    {
       path: '/login',
       name: 'LogIn',
       component: LogIn
     },
     {
-      path: '/index',
-      name: 'Index',
-      component: Index
+      path: '/leagues',
+      name: 'Leagues',
+      component: Leagues
     },
     {
       path: '/register_league',
@@ -77,11 +83,6 @@ export default new Router({
       path: '/add_manager/',
       name: 'AddManager',
       component: AddManager
-    },
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
     },
   ],
   mode: 'history'

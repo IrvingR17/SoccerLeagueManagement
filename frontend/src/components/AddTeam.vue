@@ -1,10 +1,10 @@
 <template>
-    <div>
         <div class="containe">
             <div class="info">
-                <h2>Agregar equipo</h2>
+                <h2>Agregar Equipo</h2>
                 <h5>Ingresa los campos para dar de alta un nuevo equipo</h5>
-
+            
+            <div class="form">
                 <b-form @submit.prevent="addTeam()">
 
                     <b-form-group id="input-group-1" label="Nombre del equipo:" label-for="input-1">
@@ -27,12 +27,12 @@
                         </option>
                     </b-form-select>
                     </b-form-group>
-                    <b-button type="submit" variant="primary">Enviar</b-button>
+                    <b-button type="submit" variant="primary">Agregar Equipo</b-button>
 
                 </b-form>
             </div>
+            </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -52,6 +52,7 @@ export default {
         async addTeam () {
             const data = { name: this.name, manager_name: this.manager.id, league_name: this.league_name.id };
             const response = await axios.post('http://127.0.0.1:8000/api/teams/create/', data) 
+            this.goToLeague()
         },
         async getData () {
             this.id = this.$route.params.id
@@ -71,6 +72,10 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
+        },
+        goToLeague() {
+            alert("Equipo agregado correctamente")
+            this.$router.back() 
         }
     },
     created() {
@@ -84,6 +89,9 @@ export default {
     .info {
         text-align: left;
         margin: 15px;
+    }
+    .form {
+        margin: 25px 50px 0 50px;
     }
     h2 {
         border-bottom: 1px solid black;

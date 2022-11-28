@@ -2,9 +2,9 @@
     <div>
         <div class="containe">
             <div class="info">
-                <h2>Registrar liga</h2>
+                <h2>Registrar Liga</h2>
                 <h5>Ingresa los campos para dar de alta una nueva liga</h5>
-
+            <div class="form">
                 <b-form @submit.prevent="addLeague()">
 
                     <b-form-group id="input-group-1" label="Nombre de la liga:" label-for="input-1">
@@ -23,9 +23,10 @@
                         required
                         ></b-form-input>
                     </b-form-group>
-                    <b-button type="submit" variant="primary">Enviar</b-button>
+                    <b-button type="submit" variant="primary">Registrar Liga</b-button>
 
                 </b-form>
+            </div>
             </div>
         </div>
     </div>
@@ -46,6 +47,11 @@ export default {
         async addLeague () {
             const data = { name: this.name, description: this.description };
             const response = await axios.post('http://127.0.0.1:8000/api/leagues/create/', data) 
+            this.goToLeagues()
+        },
+        goToLeagues() {
+            alert("Liga agregada correctamente")
+            this.$router.push('/leagues')
         }
     }
 }
@@ -56,6 +62,10 @@ export default {
     .info {
         text-align: left;
         margin: 15px;
+    }
+    .form {
+        margin: 25px 50px 0 50px;
+
     }
     h2 {
         border-bottom: 1px solid black;
