@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="primary">
       <b-navbar-brand class="nav-title" href="#"><router-link class="logo" to="/"><img class="nav-logo" src="./assets/logo_app.png" alt="logo"></router-link></b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -69,7 +69,7 @@ export default {
   }
   .link {
     display: block;
-    color: #2c3e50; 
+    color: white; 
     text-align: left;
     padding: 15px;
   }
